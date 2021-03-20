@@ -1,0 +1,16 @@
+---
+# tasks file for setting_s2s_vpn
+    - name: update,upgrade and instalations
+      include_tasks: apt.yaml
+
+    - name: sysctl and ipsec conf
+      include_tasks: sysctl.yaml
+  
+    - name: ipsec
+      include_tasks: ipsec.yml
+
+    - name: ip tables rules
+      include_tasks: iptables.yaml
+
+    - name: service restart
+      include_tasks: service.yaml

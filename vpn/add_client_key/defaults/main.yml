@@ -1,0 +1,4 @@
+---
+# defaults file for add_client_key
+conf_path: '/etc/openvpn/server/server.conf'
+subnet_address: '10.128.0.0'

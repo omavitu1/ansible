@@ -1,0 +1,4 @@
+    - name: Start openvpn Service
+      service:
+        name: openvpn/server@server
+        state: started

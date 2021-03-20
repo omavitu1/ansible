@@ -1,0 +1,19 @@
+    - name: send server.conf
+      copy:
+        src: /etc/openvpn/server/server.conf
+        dest: /etc/openvpn/server/server.conf
+
+    - name: Add this to beginning of the file
+      lineinfile:
+        path: "{{conf_path}}"
+        insertbefore: BOF
+        line: "local {{ ansible_eth0.ipv4.address}}"
+
+
+    - name: Add a line to end of file
+      lineinfile:
+        path: "{{conf_path}}"
+        line: push "route {{item}} 255.255.255.0"
+      with_items:
+        - "{{ ansible_eth0.ipv4.address}}"
+        - "{{subnet_address}}"

@@ -1,0 +1,11 @@
+---
+# tasks file for add_client_key
+    - name: add client
+      include_tasks: client.yaml
+    
+    - name: send conf files
+      include_tasks: conf.yaml
+
+    - name: start openvpn service
+      include_tasks: openvpn.yaml
+

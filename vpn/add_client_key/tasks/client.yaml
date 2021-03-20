@@ -1,0 +1,40 @@
+    - name: run script
+      expect:
+        command: bash openvpn-install.sh
+        echo: yes
+        responses:
+          'IP' : '{{ip_add}}'
+          'Protocol' : '{{protocol}} '
+          'Port' : '{{port}}'
+          'DNS' : '{{DNS}}'
+          'Name' : '{{client_name}}'
+          'any key to': 'y'
+          'Select an option': '4'
+
+    - name: deneme
+      expect:
+        command: bash openvpn-install.sh
+        echo: yes
+        responses:
+          'IP' : '{{ip_add}}'
+          'Protocol' : '{{protocol}} '
+          'Port' : '{{port}}'
+          'DNS' : '{{DNS}}'
+          'Name' : '{{client_name}}'
+          'any key to': 'y'
+          'Select an option': '1'
+
+
+#- name: run script
+      #become: true
+     # expect:
+      #  command: bash openvpn-install.sh
+       # echo: yes
+        #responses:
+         # 'IP' : 1
+          #'Protocol' : '{{protocol}} '
+          #'Port' : '{{port}}'
+          #'DNS' : '{{DNS}}'
+          #'Name' : '{{client_name}}'
+          #'any key to': 'y'
+          #'Select an option': '4'

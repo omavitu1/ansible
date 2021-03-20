@@ -1,0 +1,6 @@
+- name: add secret rules
+  lineinfile: 
+    path: /etc/ipsec.secrets
+    line: "{{ip_addA}} {{ip_addB}} : PSK \"{{shared_key}}\""
+
+ 

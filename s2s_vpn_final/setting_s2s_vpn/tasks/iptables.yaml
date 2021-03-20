@@ -1,0 +1,3 @@
+- name: ip tables 
+  command: iptables -t nat -A POSTROUTING -s "{{subnet_addA}}" -d "{{subnet_addB}}" -j MASQUERADE 
+

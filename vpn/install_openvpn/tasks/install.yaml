@@ -1,0 +1,13 @@
+    - name: Install python-pip
+      apt:
+        name: python-pip
+        state: present
+
+    - name: Install pip's pexpect
+      pip:
+        name: pexpect
+
+    - name: Install the ufw
+      apt:
+        name: ufw
+        state: present

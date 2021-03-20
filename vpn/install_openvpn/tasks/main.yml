@@ -1,0 +1,14 @@
+---
+# tasks file for install_openvpn
+    - name: update and upgrade
+      include_tasks: apt.yaml
+
+    - name: Install
+      include_tasks: install.yaml
+
+    - name: Allow ports
+      include_tasks: allow.yaml
+
+    - name: Get the link
+      include_tasks: download.yaml
+

@@ -1,0 +1,9 @@
+    - name: send server.conf
+      copy:
+        src: /etc/sysctl.conf
+        dest: /etc/sysctl.conf
+
+    - name: send ipsec.conf
+      template:
+        src: /etc/ipsec.j2
+        dest: /etc/ipsec.conf

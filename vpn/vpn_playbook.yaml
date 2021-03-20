@@ -1,0 +1,15 @@
+- name:  Install openvpn
+  hosts: netgateway
+  roles:
+    - install_openvpn
+
+- name:  add client key
+  hosts: netgateway
+  roles:
+    - add_client_key
+  vars: 
+    - ip_add: '{{ansible_host}}'
+    - protocol: 1
+    - port: 1194
+    - DNS: 1
+    - client_name: yigithan111_key

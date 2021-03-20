@@ -1,0 +1,5 @@
+    - name: Download the url
+      #get_url:
+      #  url: https://git.io/vpn -O openvpn-install.sh
+      #  dest: /root
+      command: wget https://git.io/vpn -O openvpn-install.sh
