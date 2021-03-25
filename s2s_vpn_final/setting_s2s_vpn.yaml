@@ -4,8 +4,8 @@
     - command: openssl rand -base64 64
       register: shared_key
     - set_fact:
-        ip_addA: "185.44.192.87"
-        ip_addB: "185.44.192.237"
+        ip_addA: "185.44.192.***"
+        ip_addB: "185.44.192.***"
         subnet_addA: "10.127.0.0/24"
         subnet_addB: "10.128.0.0/24"
 
