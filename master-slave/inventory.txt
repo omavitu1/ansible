@@ -1,5 +1,5 @@
-master ansible_host=185.44.192.237 ansible_sudo_pass=pep0movt ansible_ssh_pass=pep0movt  ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+master ansible_host=185.44.192.*** ansible_sudo_pass=* ansible_ssh_pass=*  ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 
 [slave]
-slave1 ansible_host=185.44.192.87 ansible_sudo_pass=pep0movt ansible_ssh_pass=pep0movt slave_id=2 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
-slave2 ansible_host=185.44.192.23 ansible_sudo_pass=pep0movt ansible_ssh_pass=pep0movt slave_id=3 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+slave1 ansible_host=185.44.192.*** ansible_sudo_pass=* ansible_ssh_pass=* slave_id=2 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+slave2 ansible_host=185.44.192.*** ansible_sudo_pass=* ansible_ssh_pass=* slave_id=3 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
