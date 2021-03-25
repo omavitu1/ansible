@@ -1,1 +1,0 @@
-netgateway ansible_host=185.44.192.237 ansible_sudo_pass=pep0movt ansible_ssh_pass=pep0movt ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
