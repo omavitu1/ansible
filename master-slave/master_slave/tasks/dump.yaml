@@ -1,0 +1,6 @@
+- name: Dump all databases to database.sql
+  mysql_db:
+     login_unix_socket: /var/run/mysqld/mysqld.sock
+     state: dump
+     name: all
+     target: /tmp/database.sql

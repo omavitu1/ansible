@@ -1,0 +1,27 @@
+---
+# tasks file for master_slave
+- name: update,upgrade and instalations
+  include_tasks: apt.yaml
+
+- name: send conf 
+  include_tasks: conf.yaml
+
+- name: start openvpn service
+  include_tasks: service.yaml
+
+- name: server1
+  include_tasks: server1.yaml
+  when: inventory_hostname == 'master'
+
+- name: server1 dump
+  include_tasks: dump.yaml
+  when: inventory_hostname == 'master'
+
+- name: server2
+  include_tasks: copy.yaml
+  when: inventory_hostname != 'master'
+
+- name: server2
+  include_tasks: server2.yaml
+  when: inventory_hostname != 'master'
+

@@ -1,0 +1,11 @@
+- name: MASTER-SLAVE
+  hosts: master , slave
+  serial: 1
+  roles:
+    - master_slave
+  vars:
+    slave_list: 
+      - "185.44.192.87"
+      - "185.44.192.23"      
+
+
