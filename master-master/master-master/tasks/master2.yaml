@@ -1,0 +1,35 @@
+- name: copy database.sql
+  expect:
+     command: scp root@"{{ hostvars['master1']['ansible_host'] }}":/tmp/database.sql /tmp/
+     echo: yes
+     responses:
+        'password': "{{ hostvars['master1']['ansible_ssh_pass'] }}"
+        'you want to continue' : 'yes'
+
+- name: Create a new database with name 'bobdata'
+  mysql_db:
+    name: "{{binlog_do_db}}"
+    state: present
+
+- name: Import the database
+  mysql_db:
+     login_unix_socket: /var/run/mysqld/mysqld.sock
+     state: import
+     name: all
+     target: /tmp/database.sql
+
+- name: special for server2 && grant slave priv
+  mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: replica
+    login_host: "{{ hostvars['master1']['ansible_host'] }}"
+    host: "{{ hostvars['master1']['ansible_host'] }}"
+    password: "password"
+    priv: '*.*:ALL,GRANT'
+    state: present
+
+- name: special for server2 && show status and register
+  mysql_replication:
+    mode: getmaster
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  register: master2
