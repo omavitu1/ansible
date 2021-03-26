@@ -6,9 +6,10 @@
         'password': "{{ hostvars['master1']['ansible_ssh_pass'] }}"
         'you want to continue' : 'yes'
 
-- name: Create a new database with name 'bobdata'
+- name: Create a new database with name ozzy
   mysql_db:
-    name: "{{binlog_do_db}}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: "ozzy1998"
     state: present
 
 - name: Import the database

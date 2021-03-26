@@ -2,53 +2,11 @@
   hosts: master1 , master2
   roles:
     - master-master
-  vars:
-    -binlog_do_db: "ozzy1998"
+  #vars:
+   # - binlog_do_db: "ozzy1998"
 
 
-- name: special for server1 &&Stop slave
-  hosts: master1 
-  mysql_replication:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    mode: stopslave
-
-- name: special for server2 && set up the slave 
-  hosts: master1
-  mysql_replication:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    mode: changemaster
-    master_host: "{{ hostvars['master2']['ansible_host'] }}"
-    master_user: "replica"
-    master_password: "password"
-    master_log_file: "{{hostvars['master2']['master2'].File}}"
-    master_log_pos: "{{hostvars['master2']['master2'].Position}}"
-  
-- name: Start slave
-  hosts: master1
-  mysql_replication:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    mode: startslave
-
-
-- name: special for server1 &&Stop slave
-  hosts: master2 
-  mysql_replication:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    mode: stopslave
-
-- name: special for server2 && set up the slave 
-  hosts: master2
-  mysql_replication:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    mode: changemaster
-    master_host: "{{ hostvars['master1']['ansible_host'] }}"
-    master_user: "replica"
-    master_password: "password"
-    master_log_file: "{{hostvars['master1']['master1'].File}}"
-    master_log_pos: "{{hostvars['master1']['master1'].Position}}"
-  
-- name: Start slave
-  hosts: master2
-  mysql_replication:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    mode: startslave
+- name: MASTER-MASTER
+  hosts: master1 , master2
+  roles:
+    - set_up_master

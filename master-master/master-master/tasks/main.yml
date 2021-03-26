@@ -14,5 +14,5 @@
   when: inventory_hostname == 'master1'
 
 - name: master2
-  include_tasks: copy.yaml
+  include_tasks: master2.yaml
   when: inventory_hostname == 'master2'

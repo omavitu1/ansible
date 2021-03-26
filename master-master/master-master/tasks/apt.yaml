@@ -1,3 +1,4 @@
+
 - name: update
   apt:
     update_cache: true
@@ -11,6 +12,8 @@
 - name: Install pip PyMySQL package
   pip:
      name: PyMySQL
+- name: Remove old dumps
+  shell: echo ""> /tmp/database.sql
 
 - name: Ansible apt with_items 
   apt:
