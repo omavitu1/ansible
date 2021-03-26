@@ -1,9 +1,0 @@
----
-# tasks file for set_up_master
-- name: master1
-  include_tasks: master1.yaml
-  when: inventory_hostname == 'master1'
-
-- name: master2
-  include_tasks: master2.yaml
-  when: inventory_hostname == 'master2'
