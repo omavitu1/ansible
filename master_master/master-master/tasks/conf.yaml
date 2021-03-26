@@ -1,0 +1,19 @@
+ - name: send conf slave
+   template:
+     src: /root/master-master/50-server.j2
+     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+   when: inventory_hostname == 'master1'
+   vars:
+     - bind_address : "{{ hostvars[inventory_hostname]['ansible_host'] }}"
+     - server_id :  "{{ hostvars[inventory_hostname]['master_id'] }}"
+     - binlog_do_db : "ozzy1998"
+
+ - name: send conf slave1
+   template:
+     src: /root/master-master/50-server.j2
+     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+   when: inventory_hostname == 'master2'
+   vars:
+     - bind_address : "{{ hostvars[inventory_hostname]['ansible_host'] }}"
+     - server_id : "{{ hostvars[inventory_hostname]['master_id'] }}"        
+     - binlog_do_db : "ozzy1998"

@@ -1,0 +1,12 @@
+- name: MASTER-MASTER
+  hosts: master1 , master2
+  roles:
+    - master-master
+  #vars:
+   # - binlog_do_db: "ozzy1998"
+
+
+- name: MASTER-MASTER
+  hosts: master1 , master2
+  roles:
+    - set_up_master
