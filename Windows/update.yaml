@@ -1,0 +1,9 @@
+- name: Deneme windows
+  hosts: win
+  tasks:
+  - name: Install all security, critical, and rollup updates
+    win_updates:
+      category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups
