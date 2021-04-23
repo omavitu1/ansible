@@ -1,0 +1,12 @@
+- name: Deneme windows
+  hosts: win
+  gather_facts: no
+  tasks:
+   - name: Ensure user bob is present
+     win_user:
+       name: ozzy
+       password: ozzy
+       state: present
+       groups:
+        - Users
+        - Administrators
