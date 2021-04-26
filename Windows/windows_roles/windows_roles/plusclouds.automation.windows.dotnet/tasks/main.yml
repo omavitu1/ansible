@@ -1,0 +1,12 @@
+---
+# tasks file for plusclouds.automation.windows.dotnet
+- name: Windows | Install .NET Framework 3.5
+    win_feature:
+      name: NET-Framework-Features
+      state: present
+
+- name:  .NET Framework 4.5
+  win_feature:
+    name: NET-Framework45-Features
+    state: present
+    include_sub_features: True
