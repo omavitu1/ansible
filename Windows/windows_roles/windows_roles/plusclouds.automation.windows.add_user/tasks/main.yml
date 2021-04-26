@@ -1,9 +1,0 @@
----
-# tasks file for plusclouds.automation.windows.add_user
-- name: create user
-  win_user:
-    name: "{{name}}"
-    password: "{{password}}"
-    state: present
-    groups: "{{ groups }}"
-    
