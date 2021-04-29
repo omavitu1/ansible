@@ -1,8 +1,0 @@
-- name: Deneme windows .net
-  hosts: win
-  tasks:
-  - name:  .NET Framework 4.5
-    win_feature:
-      name: NET-Framework45-Features
-      state: present
-      include_sub_features: True

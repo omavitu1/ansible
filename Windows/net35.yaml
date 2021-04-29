@@ -1,7 +1,0 @@
-- name: Deneme windows
-  hosts: win
-  tasks:
-  - name: Windows | Install .NET Framework 3.5
-    win_feature:
-      name: NET-Framework-Features
-      state: present
