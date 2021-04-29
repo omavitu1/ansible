@@ -1,0 +1,16 @@
+---
+# tasks file for plusclouds.automation.windows.dotnet
+- name: Install SQL Server 2019
+  include_tasks: sql2019.yaml
+  when: "{{install_version}}" == "2019"
+
+- name: Install SQL Express Server
+  include_tasks: sqlexpress.yaml
+  when: "{{install_version}}" == "express"
+
+
+- name: Install SQL Server Management Studio
+  include_tasks: sqlstudio.yaml
+  when: "{{install_studio}}" == "yes"
+
+

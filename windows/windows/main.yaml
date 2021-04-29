@@ -1,0 +1,27 @@
+- name: Windows Roles
+  hosts: win
+  gather_facts: no
+  roles:
+    - plusclouds.automation.windows.update
+    #- plusclouds.automation.windows.dotnet
+    #- plusclouds.automation.windows.iis
+    #- plusclouds.automation.windows.sql
+    #- plusclouds.automation.windows.active_directory
+    #- plusclouds.automation.windows.disk_extansion
+    #- plusclouds.automation.windows.add_user        
+    #- plusclouds.automation.windows.remove_user
+    #- plusclouds.automation.windows.license_process.yaml
+  
+  vars:
+    - category_names: [ SecurityUpdates , CriticalUpdates, UpdateRollups, Updates ]
+    - name: "ozzy"
+    - password: "ozzy!"
+    - groups: [ Administrators , Users ]
+    #- install_version: "4"
+    #- install_version: "2019"
+    #- install_studio: "No"
+    #- sql_instance_id: "SQLPLUS"
+    #- sql_instance_name: "SQLPLUS"
+    #- drive_letter: "C"
+    #- partition_size: 30GB
+    #- disk_number: 1

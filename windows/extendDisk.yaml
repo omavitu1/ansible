@@ -1,0 +1,16 @@
+- name: extend windows
+  hosts: win
+  gather_facts: no
+  become_method: runas
+  tasks:
+    - name: Create a partition with drive letter D and size 5 GiB
+      win_partition:
+        drive_letter: C
+        partition_size: 27GB
+        disk_number: 1
+
+    - name: Resize previously created partition to it's maximum size and change it's drive letter to E
+      win_partition:
+        drive_letter: C
+        partition_size: -1
+        partition_number: 1

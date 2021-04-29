@@ -1,0 +1,14 @@
+---
+# tasks file for plusclouds.automation.windows.disk_extansion
+- name: Create a partition with drive letter and size
+  win_partition:
+    drive_letter: "{{ drive_letter }}"
+    partition_size: "{{ partition_size }}"
+    disk_number: "{{ disk_number }}"
+
+#- name: Resize previously created partition to it's maximum size and change it's drive letter to E
+ # win_partition:
+  #  drive_letter: C
+   # partition_size: -1
+    #partition_number: 1
+
