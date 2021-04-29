@@ -2,11 +2,11 @@
 # tasks file for plusclouds.automation.windows.dotnet
 - name: Install .NET 3.5 
   include_tasks: dotnet35.yaml
-  when: "{{install_version}}" == 3
+  when: install_version == 3
 
 - name: Install .NET 4.7
   include_tasks: dotnet45.yaml
-  when: "{{install_version}}" == 4
+  when: install_version == 4
 
 
 
