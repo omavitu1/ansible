@@ -1,0 +1,2 @@
+- name: Install the database
+  win_command: c:\sql{{ install_version }}\sql_installer.exe /q  /configurationfile=c:\sql{{ install_version }}\sql_conf.ini 

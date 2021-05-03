@@ -1,0 +1,10 @@
+
+- name: create a directory for installer download
+  win_file: 
+    path: c:\sql{{ install_version }}
+    state: directory
+
+- name: create the configuration file
+  win_template: 
+    src: sql_conf.ini.j2
+    dest: c:\sql{{ install_version }}\sql_conf.ini

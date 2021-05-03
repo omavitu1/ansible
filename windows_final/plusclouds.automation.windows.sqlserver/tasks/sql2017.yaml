@@ -1,0 +1,2 @@
+  
+- win_command: choco install sql-server-2017 -o -ia "'/IACCEPTSQLSERVERLICENSETERMS /Q /ACTION=install /INSTANCEID={{sql_instance_id}} /INSTANCENAME={{sql_instance_name}} /UPDATEENABLED=FALSE'" -f -y

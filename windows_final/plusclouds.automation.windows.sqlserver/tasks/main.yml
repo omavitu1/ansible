@@ -1,0 +1,19 @@
+---
+# tasks file for plusclouds.automation.windows.dotnet
+- name: Ensure Chocolatey itself is installed and use latest version
+  win_chocolatey:
+    name: chocolatey
+    state: latest
+
+- name: Install SQL Server 2019
+  include_tasks: sql2019.yaml
+  when: install_version  == "2019"
+
+- name: Install SQL Server 2017
+  include_tasks: sql2017.yaml
+  when: install_version == "2017"
+
+- name: Install SQL Express Server
+  include_tasks: sqlexpress.yaml
+  when: install_version  == "express"
+

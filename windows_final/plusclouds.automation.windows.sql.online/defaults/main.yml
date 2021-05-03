@@ -1,0 +1,11 @@
+---
+# defaults file for plusclouds.automation.windows.dotnet
+install_url: "https://go.microsoft.com/fwlink/?linkid=866662"
+install_version: "19"
+sql_instance_name: SQL2019TRIAL
+sql_instance_id: SQL2019TRIAL
+sqlsvcaccount: "Administrator"
+sqlsvcpassword: "Passw0rd!"
+rssvcaccount: "Administrator"
+rssvcpassword: "Passw0rd!"
+tcp_port: 1433

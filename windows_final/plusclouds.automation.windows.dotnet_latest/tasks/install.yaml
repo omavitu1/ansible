@@ -1,0 +1,3 @@
+- name: Run Microsoft .NET Framework 4.8.2 installer
+  raw: C:\tmp\dotnet\dotnet{{install_version}}\{{executable_name}}.exe /q /norestart /log C:\tmp\dotnet\dotnet{{install_version}}\log.txt /x86 /x64 /redist
+  register: dotnet_install

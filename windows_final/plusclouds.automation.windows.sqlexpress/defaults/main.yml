@@ -1,0 +1,11 @@
+---
+# defaults file for plusclouds.automation.windows.dotnet
+install_url: "https://download.microsoft.com/download/7/c/1/7c14e92e-bdcb-4f89-b7cf-93543e7112d1/SQLEXPR_x64_ENU.exe"
+install_version: "19"
+sql_instance_name: plusSQL19
+sql_instance_id: plusSQL19
+sqlsvcaccount: "Administrator"
+sqlsvcpassword: "Passw0rd!"
+rssvcaccount: "Administrator"
+rssvcpassword: "Passw0rd!"
+tcp_port: 1433

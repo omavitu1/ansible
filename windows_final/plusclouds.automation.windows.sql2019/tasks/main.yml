@@ -1,0 +1,4 @@
+- name: Install sql-server-2019 with win_chocolatey
+  win_chocolatey:
+    name: sql-server-2019
+    state: present

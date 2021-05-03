@@ -1,0 +1,4 @@
+
+
+- name: Install sql-server-express with specified configuration.
+  win_command: choco install sql-server-express -o -ia "'/IACCEPTSQLSERVERLICENSETERMS /Q /ACTION=install /INSTANCEID={{sql_instance_id}} /INSTANCENAME={{sql_instance_name}} /UPDATEENABLED=FALSE'" -f -y

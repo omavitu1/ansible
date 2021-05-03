@@ -1,0 +1,7 @@
+
+- hosts: all
+  gather_facts: no
+  roles:
+    - plusclouds.automation.windows.update
+  vars:
+     category_names: [ SecurityUpdates , CriticalUpdates, UpdateRollups, Updates ]

@@ -1,0 +1,4 @@
+- include_tasks: folder.yaml
+- include_tasks: installer.yaml
+- include_tasks: install.yaml
+

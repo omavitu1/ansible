@@ -1,0 +1,4 @@
+- name: Install .NET 3.5 from source
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.dotnet35package

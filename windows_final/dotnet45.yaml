@@ -1,0 +1,7 @@
+
+- name: Install .NET 4.5 from source
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.dotnet45
+  vars:
+    download_link: "https://go.microsoft.com/fwlink/?linkid=2088631"

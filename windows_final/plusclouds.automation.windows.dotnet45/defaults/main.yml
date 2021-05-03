@@ -1,0 +1,5 @@
+---
+# defaults file for plusclouds.automation.windows.dotnet
+executable_name: "dotnet_installer"
+install_version: "4.5"
+download_link : "http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe"

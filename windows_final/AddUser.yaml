@@ -1,0 +1,11 @@
+- name: Windows Roles
+  hosts: win
+  gather_facts: no
+  roles:
+    - plusclouds.automation.windows.add_user        
+
+  
+  vars:
+    - name: "ozzy"
+    - password: "ozzy!"
+    - groups: [ Administrators , Users ]

@@ -1,0 +1,9 @@
+  
+- name: Windows extend disk
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.disk_extansion
+  vars:
+    drive_letter: "C"
+    partition_size: 30GB
+    disk_number: 1

@@ -1,0 +1,4 @@
+- name: Download Microsoft .NET Framework 4.5 installer
+  win_get_url:
+      url: "{{ download_link }}"
+      dest: C:\tmp\dotnet\dotnet{{install_version}}\{{executable_name}}.exe

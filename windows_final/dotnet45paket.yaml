@@ -1,0 +1,5 @@
+
+- name: Install .NET 4.5 from source
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.dotnet45package

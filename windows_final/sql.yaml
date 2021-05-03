@@ -1,0 +1,10 @@
+  
+- name: Install SQL Server on target Windows Host
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.sqlserver
+  vars:
+     install_version: "2019"
+     install_studio: "No"
+     sql_instance_id: "SQL20192"
+     sql_instance_name: "SQL20192"

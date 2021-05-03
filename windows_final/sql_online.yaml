@@ -1,0 +1,4 @@
+- name: Install SQL Server on target Windows Host
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.sql.server.online

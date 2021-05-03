@@ -1,0 +1,4 @@
+- name: a pre requisite of sql net-framework-35
+  win_feature:
+    name: NET-Framework-Core
+    state: present

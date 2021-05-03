@@ -1,0 +1,4 @@
+- name: Install sql server 2016
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.sql2019

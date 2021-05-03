@@ -1,0 +1,8 @@
+- name: Windows Roles
+  hosts: win
+  gather_facts: no
+  roles:
+    - plusclouds.automation.windows.dotnet35
+  
+  vars:
+    download_link: "https://go.microsoft.com/fwlink/?linkid=2088631"

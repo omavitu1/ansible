@@ -1,0 +1,6 @@
+- name: Install .NET Framework 3.5 , 3.0 , 2.0  -> successfull
+  win_feature:
+    name: NET-Framework-Features
+    state: present
+  register: dotnet3_install
+

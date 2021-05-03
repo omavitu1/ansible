@@ -1,0 +1,8 @@
+---
+# tasks file for plusclouds.automation.windows.remove_user
+- name: remove user
+  win_user:
+    name: "{{name}}"
+    password: "{{password}}"
+    state: absent
+    remove: yes

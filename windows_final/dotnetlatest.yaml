@@ -1,0 +1,9 @@
+- name: Install .NET framework with installer.exe
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.dotnet_latest
+    
+  vars:
+    install_version: "4.8.2"
+    download_link: "https://go.microsoft.com/fwlink/?linkid=2088631"
+    executable_name: "first"

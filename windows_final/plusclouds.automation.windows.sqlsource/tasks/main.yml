@@ -1,0 +1,7 @@
+- include_tasks: folders.yaml
+- include_tasks: prerequisite.yaml
+- include_tasks: get_installer.yaml
+- include_tasks: install.yaml
+- include_tasks: registry.yaml
+- include_tasks: service.yaml
+  

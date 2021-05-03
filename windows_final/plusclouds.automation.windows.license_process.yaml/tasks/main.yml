@@ -1,0 +1,11 @@
+---
+# tasks file for plusclouds.automation.windows.update
+- name: Install a new key and replace old one.
+  win_shell: cscript slmgr.vbs /ipk {{ win_activation_key }}
+  args:
+    chdir: C:\Windows\System32\
+
+- name: Activate Windows Online
+  win_shell: cscript slmgr.vbs /ato
+  args:
+    chdir: C:\Windows\System32\

@@ -1,0 +1,4 @@
+- name: Install IIS ( Internet Information Services )
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.iis

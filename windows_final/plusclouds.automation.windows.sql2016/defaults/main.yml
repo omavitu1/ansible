@@ -1,0 +1,11 @@
+---
+# defaults file for plusclouds.automation.windows.dotnet
+install_url: "https://download.microsoft.com/download/9/2/B/92BAD988-00C5-4F68-811E-B7FFBE009B00/SQLServer2016SP2-KB4052908-x64-ENU.exe"
+install_version: "16"
+sql_instance_name: SQL2016TRIAL
+sql_instance_id: SQL2016TRIAL
+sqlsvcaccount: "Administrator"
+sqlsvcpassword: "Passw0rd!"
+rssvcaccount: "Administrator"
+rssvcpassword: "Passw0rd!"
+tcp_port: 1433

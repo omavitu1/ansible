@@ -1,0 +1,9 @@
+- name: Windows Roles
+  hosts: win
+  gather_facts: no
+  roles:    
+    - plusclouds.automation.windows.remove_user
+    
+  vars:
+    - name: "ozzy"
+    

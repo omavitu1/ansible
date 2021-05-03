@@ -1,0 +1,14 @@
+- name: sql
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.sqlsource
+  vars:
+    install_url: "https://download.microsoft.com/download/9/0/7/907AD35F-9F9C-43A5-9789-52470555DB90/ENU/SQLEXPR_x64_ENU.exe"
+    install_version: "16"
+    sql_instance_name: plusSQL16
+    sql_instance_id: plusSQL16
+    sqlsvcaccount: "Administrator"
+    sqlsvcpassword: "Passw0rd!"
+    rssvcaccount: "Administrator"
+    rssvcpassword: "Passw0rd!"
+    tcp_port: 1433

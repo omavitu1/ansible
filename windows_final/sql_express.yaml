@@ -1,0 +1,5 @@
+
+- name: sql express
+  hosts: win
+  roles:
+    - plusclouds.automation.windows.sqlexpress
