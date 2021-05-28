@@ -53,7 +53,7 @@ router.post(
 // pathleri i sor ve değiştir
 //buna göre bid sectionı için yeni path yarat shop.js te
 
-router.get('/edit-product/:productId', isAuth, adminController.giveBidProduct);
+router.get('/edit-bid/:productId', isAuth, adminController.giveBidProduct);
 
 router.post(
   '/edit-product',

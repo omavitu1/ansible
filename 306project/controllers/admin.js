@@ -223,9 +223,9 @@ exports.giveBidProduct = (req, res, next) => {
       if (!product) {
         return res.redirect('/');
       }
-      res.render('admin/edit-product', {
+      res.render('admin/edit-bid', {
         pageTitle: 'Give Bid',
-        path: '/admin/edit-product',
+        path: '/admin/edit-bid',
         editing: editMode,
         product: product,
         hasError: false,
@@ -243,7 +243,7 @@ exports.giveBidProduct = (req, res, next) => {
 exports.postBidProduct = (req, res, next) => {
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
-  const updatedPrice = req.body.price;
+  const updatedBid = req.body.currentPrice;
   const image = req.file;
   const updatedDesc = req.body.description;
 
@@ -257,7 +257,7 @@ exports.postBidProduct = (req, res, next) => {
       hasError: true,
       product: {
         title: updatedTitle,
-        price: updatedPrice,
+        price: updatedBid,
         description: updatedDesc,
         _id: prodId
       },
