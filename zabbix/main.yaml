@@ -1,0 +1,29 @@
+- name: zabbix
+  hosts: zabbix
+  remote_user: root     
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: get
+      command: wget https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-1+buster_all.deb
+
+    - name: dpkg
+      command: dpkg -i zabbix-release_5.0-1+buster_all.deb
+        
+    #- name: update
+      #apt:
+       # update_cache: true
+
+    - name: Ansible apt with_items 
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - 'zabbix-server-mysql'
+        - 'zabbix-frontend-php'
+        - 'zabbix-apache-conf'
+        - 'zabbix-agent'
+        - 'mysql-server'
+
+    # sec install ekle
+

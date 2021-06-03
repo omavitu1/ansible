@@ -1,0 +1,50 @@
+- name: zabbix
+  hosts: zabbix
+  remote_user: root
+  become: yes
+  gather_facts: yes
+  vars:
+    - ozzy: "pep0movt"
+  tasks:
+    - name: Upgrade pip to be able to install pymysql
+      pip:
+        name: pip
+        extra_args: --upgrade
+
+
+    - name: Install pip PyMySQL package
+      pip:
+        name: PyMySQL
+
+    - name: Install pip's pexpect
+      pip:
+        name: pexpect
+
+    - name: Adds Python MySQL support on Debian/Ubuntu
+      apt: pkg="python-mysqldb" state=present
+     
+    - name: Set the root password 
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt
+
+    - name: Secure the root user for IPV6 localhost (::1)
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="::1"
+
+    - name: Secure the root user for IPV4 localhost (127.0.0.1)
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="127.0.0.1"
+
+    - name: Secure the root user for localhost domain
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="localhost"
+
+    - name: Secure the root user for server_hostname domain
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="{{ ansible_fqdn }}"
+
+    - name: Deletes anonymous server user
+      mysql_user: login_user=root login_password=pep0movt user="" host_all=yes state=absent
+
+    - name: Removes the test database
+      mysql_db: login_user=root login_password=pep0movt db=test state=absent
+
+
+    - shell: mysql -u root -p'{{ozzy}}' -e "create database zabbix character set utf8 collate utf8_bin;"
+    - shell: mysql -u root -p'{{ozzy}}' -e "create user zabbix41@localhost identified by 'password';"
+    - shell: mysql -u root -p'{{ozzy}}' -e "grant all privileges on zabbix.* to zabbix41@localhost;"

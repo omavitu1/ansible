@@ -1,0 +1,135 @@
+# wget https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-1+buster_all.deb
+# dpkg -i zabbix-release_5.0-1+buster_all.deb
+# apt update
+# apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent
+# apt install mysql-server
+# mysql_secure_installation
+# mysql -uroot -p
+# password
+# mysql> create database zabbix character set utf8 collate utf8_bin;
+# mysql> create user zabbix@localhost identified by 'password';
+# mysql> grant all privileges on zabbix.* to zabbix@localhost;
+# mysql> quit;
+# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+# Edit file /etc/zabbix/zabbix_server.conf  -->DBPassword=password
+# Edit file /etc/zabbix/apache.conf  --> php_value date.timezone Europe/Istanbul
+# systemctl restart zabbix-server zabbix-agent apache2
+# systemctl enable zabbix-server zabbix-agent apache2
+
+- name: zabbix
+  hosts: zabbix
+  remote_user: root
+  become: yes
+  gather_facts: yes
+  vars:
+  - ozzy: "pep0movt"
+  tasks:
+    - name: get
+      command: wget https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-1+buster_all.deb
+
+    - name: dpkg
+      command: dpkg -i zabbix-release_5.0-1+buster_all.deb
+
+    #- name: update
+      #apt:
+       # update_cache: true
+
+    - name: Ansible apt with_items
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - 'zabbix-server-mysql'
+        - 'zabbix-frontend-php'
+        - 'zabbix-apache-conf'
+        - 'zabbix-agent'
+        - 'mysql-server'
+        - 'mysql-client'
+
+    - name: Upgrade pip to be able to install pymysql
+      pip:
+        name: pip
+        extra_args: --upgrade
+
+
+    - name: Install pip PyMySQL package
+      pip:
+        name: PyMySQL
+
+    - name: Install pip's pexpect
+      pip:
+        name: pexpect
+
+    # mysql sec ekle
+    - name: Adds Python MySQL support on Debian/Ubuntu
+      apt: pkg="python-mysqldb" state=present
+
+    - name: Set the root password
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt
+
+    - name: Secure the root user for IPV6 localhost (::1)
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="::1"
+
+    - name: Secure the root user for IPV4 localhost (127.0.0.1)
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="127.0.0.1"
+
+    - name: Secure the root user for localhost domain
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="localhost"
+
+    - name: Secure the root user for server_hostname domain
+      mysql_user: login_user=root login_password=pep0movt user=root password=pep0movt host="{{ ansible_fqdn }}"
+
+    - name: Deletes anonymous server user
+      mysql_user: login_user=root login_password=pep0movt user="" host_all=yes state=absent
+
+    - name: Removes the test database
+      mysql_db: login_user=root login_password=pep0movt db=test state=absent
+
+    - shell: mysql -u root -p'{{ozzy}}' -e "create database zabbix character set utf8 collate utf8_bin;"
+    - shell: mysql -u root -p'{{ozzy}}' -e "create user zabbix39@localhost identified by 'password';"
+    - shell: mysql -u root -p'{{ozzy}}' -e "grant all privileges on zabbix.* to zabbix39@localhost;"
+
+
+    - name: send conf zpac.conf
+      template:
+        src: zcat.sh
+        dest: /tmp/zcat.sh
+
+    - name: zcat passwd
+      expect:
+         command: bash /tmp/zcat.sh
+         responses:
+           "Enter password": 'password'
+
+    # en son j2 olarak güncellersin
+    - name: send conf zabbix_server.conf
+      template:
+        src: /root/ansible/zabbix/zabbix_server.conf
+        dest: /etc/zabbix/zabbix_server.conf
+
+    - name: send conf apache.conf
+      template:
+        src: /root/ansible/zabbix/apache.conf
+        dest: /etc/zabbix/apache.conf
+
+
+    - name: restart mysql Service
+      service:
+        name: "{{ item }}"
+        state: restarted
+      with_items:
+        - 'zabbix-server'
+        - 'zabbix-agent'
+        - 'apache2'
+
+#    - name: enable mysql Service
+#      service:
+#        name: "{{ item }}"
+#        state: enabled
+#      with_items:
+#        - 'zabbix-server'
+#        - 'zabbix-agent'
+#        - 'apache2'
+
+    - name: restart enable Service
+      command: systemctl enable zabbix-server zabbix-agent apache2
