@@ -1,0 +1,20 @@
+- name: restart mysql Service
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - 'zabbix-server'
+    - 'zabbix-agent'
+    - 'apache2'
+
+#    - name: enable mysql Service
+#      service:
+#        name: "{{ item }}"
+#        state: enabled
+#      with_items:
+#        - 'zabbix-server'
+#        - 'zabbix-agent'
+#        - 'apache2'
+
+- name: restart enable Service
+  command: systemctl enable zabbix-server zabbix-agent apache2

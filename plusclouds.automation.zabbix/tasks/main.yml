@@ -1,0 +1,19 @@
+---
+# tasks file for zabbix
+- name: get repos
+  include_tasks: repo.yaml
+
+- name: installation
+  include_tasks: installation.yaml
+
+- name: mysql_secure_installation
+  include_tasks: sec.yaml
+
+- name: mysql
+  include_tasks: mysql.yaml
+
+- name: send conf
+  include_tasks: conf.yaml
+
+- name: service
+  include_tasks: service.yaml

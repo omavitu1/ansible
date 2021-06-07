@@ -1,0 +1,21 @@
+- name: send conf zpac.conf
+  template:
+    src: zcat.sh
+    dest: /tmp/zcat.sh
+
+- name: zcat passwd
+  expect:
+      command: bash /tmp/zcat.sh
+      responses:
+        "Enter password": 'password'
+
+# en son j2 olarak güncellersin
+- name: send conf zabbix_server.conf
+  template:
+    src: /root/ansible/zabbix/zabbix_server.conf
+    dest: /etc/zabbix/zabbix_server.conf
+
+- name: send conf apache.conf
+  template:
+    src: /root/ansible/zabbix/apache.conf
+    dest: /etc/zabbix/apache.conf

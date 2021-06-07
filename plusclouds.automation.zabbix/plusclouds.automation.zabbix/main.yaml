@@ -1,0 +1,27 @@
+# wget https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-1+buster_all.deb
+# dpkg -i zabbix-release_5.0-1+buster_all.deb
+# apt update
+# apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent
+# apt install mysql-server
+# mysql_secure_installation
+# mysql -uroot -p
+# password
+# mysql> create database zabbix character set utf8 collate utf8_bin;
+# mysql> create user zabbix@localhost identified by 'password';
+# mysql> grant all privileges on zabbix.* to zabbix@localhost;
+# mysql> quit;
+# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+# Edit file /etc/zabbix/zabbix_server.conf  -->DBPassword=password
+# Edit file /etc/zabbix/apache.conf  --> php_value date.timezone Europe/Istanbul
+# systemctl restart zabbix-server zabbix-agent apache2
+# systemctl enable zabbix-server zabbix-agent apache2
+
+- name: zabbix
+  hosts: zabbix
+  remote_user: root
+  become: yes
+  gather_facts: yes
+  roles:
+    - zabbix
+  vars:
+    - ozzy: "pep0movt"

@@ -1,0 +1,29 @@
+- name: update
+  apt:
+    update_cache: true
+
+- name: Ansible apt with_items
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - 'zabbix-server-mysql'
+    - 'zabbix-frontend-php'
+    - 'zabbix-apache-conf'
+    - 'zabbix-agent'
+    - 'mysql-server'
+    - 'mysql-client'
+
+- name: Upgrade pip to be able to install pymysql
+  pip:
+    name: pip
+    extra_args: --upgrade
+
+
+- name: Install pip PyMySQL package
+  pip:
+    name: PyMySQL
+
+- name: Install pip's pexpect
+  pip:
+    name: pexpect

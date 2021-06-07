@@ -1,0 +1,11 @@
+- name: get
+  command: wget https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-1+buster_all.deb
+
+- name: dpkg
+  command: dpkg -i zabbix-release_5.0-1+buster_all.deb
+
+- name: get mysql
+  command: wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+  
+- name: dpkg mysql
+  command: dpkg -i mysql-apt-config*
