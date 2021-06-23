@@ -8,4 +8,4 @@
   command: wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
   
 - name: dpkg mysql
-  command: dpkg -i mysql-apt-config*
+  command: dpkg -i mysql-apt-config_0.8.13-1_all.deb
